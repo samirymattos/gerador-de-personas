@@ -10,10 +10,19 @@ app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
 
+mongoose.connect(
+  "mongodb+srv://api-node2:@123456@cluster0-bo2c8.mongodb.net/test?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
 app.use(bodyParser.json());
 
 const users = {};
 
-app.get("/", (req, res) => {
-  res.json({ users });
+const User = require("./src/Models/User");
+
+app.post("/", async (req, res) => {
+  const { nome, sobrenome, ano } = req.body;
+  const user = await User.create({ nome, sobrenome, ano });
+  res.json({ user });
 });
