@@ -5,7 +5,13 @@
   "repository": "https://github.com/samirymattos/node-iniciante.git",
   "author": "bell <samirymattos@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

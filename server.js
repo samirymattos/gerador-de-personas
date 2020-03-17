@@ -9,5 +9,5 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Minha primeira rota");
+  res.send("Usando nodemon");
 });
