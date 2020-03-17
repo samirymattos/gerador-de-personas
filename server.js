@@ -17,6 +17,6 @@ mongoose.connect(
 
 app.use(bodyParser.json());
 
-const users = {};
+// const users = {};
 
 app.use("/", require("./src/routes.js"));
