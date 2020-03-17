@@ -19,10 +19,4 @@ app.use(bodyParser.json());
 
 const users = {};
 
-const User = require("./src/Models/User");
-
-app.post("/", async (req, res) => {
-  const { nome, sobrenome, ano } = req.body;
-  const user = await User.create({ nome, sobrenome, ano });
-  res.json({ user });
-});
+app.use("/", require("./src/routes.js"));
