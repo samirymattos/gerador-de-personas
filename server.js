@@ -12,7 +12,7 @@ app.listen(port, () => {
 
 mongoose.connect(
   "mongodb+srv://api-node2:@123456@cluster0-bo2c8.mongodb.net/test?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true }
+  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
 );
 
 app.use(bodyParser.json());
