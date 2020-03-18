@@ -11,6 +11,7 @@ module.exports = {
   $$ |      $$ |      $$$$$$$  |        \$$$$  |
   \__|      \__|      \_______/          \____/ 
   */
+ 
   async list(req, res) {
     try {
       const users = await User.find();
@@ -34,6 +35,7 @@ module.exports = {
   $$$$$$$  |      $$ |  $$ |      \$$$$$$  |      \$$$$$\$$$$  |
   \_______/       \__|  \__|       \______/        \_____\____/ 
   */
+
   async show(req, res) {
     try {
       const { userId } = req.params;
