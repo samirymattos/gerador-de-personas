@@ -1,7 +1,7 @@
 const Persona = require("../Models/Persona");
+const User = require("../Models/User");
 
 module.exports = {
-
   /*
   $$\       $$\                         $$\     
   $$ |      \__|                        $$ |    
@@ -43,8 +43,10 @@ module.exports = {
       const persona = await Persona.find({
         _id: personaId
       });
-      if (persona.lenght === 0) {
-        return res.status(401).json({ error: "Persona não cadastrado" });
+      const personaExist = await Persona.findById({ _id: personaId });
+
+      if (!personaExist) {
+        return res.status(401).json({ error: "Não existe esta persona" });
       }
       return res.status(200).json({ persona });
     } catch (error) {
@@ -82,6 +84,14 @@ module.exports = {
         company_role,
         image
       } = req.body;
+
+      const userExist = await User.findOne({ _id: owner });
+      if (userExist === null) {
+        return res
+          .status(401)
+          .json({ error: "Esse usuário não esta cadastrado" });
+      }
+
       const persona = await Persona.create({
         owner,
         name,
@@ -183,7 +193,7 @@ module.exports = {
   \$$$$$$$ |      \$$$$$$$\       $$ |      \$$$$$$$\         \$$$$  |      \$$$$$$$\ 
   \_______|       \_______|      \__|       \_______|         \____/        \_______|
   */
- 
+
   async delete(req, res) {
     try {
       const { personaId } = req.params;
