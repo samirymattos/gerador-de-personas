@@ -5,7 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const app = express();
-let port = 3000;
+let port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
